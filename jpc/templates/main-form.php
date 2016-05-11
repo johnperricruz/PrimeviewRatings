@@ -98,7 +98,6 @@ $return =
 				</div>
 			</div>
 		</div>
-	</div>
 ';
 
 return $return;
