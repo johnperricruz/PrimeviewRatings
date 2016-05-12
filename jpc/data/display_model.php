@@ -163,7 +163,9 @@ class display_model extends database_model{
 		$sql="SELECT a.City,a.State,a.FirstName,a.LastName,b.Service,b.WillRecommend,b.TotalExperience,b.ReviewSummary,b.Review,b.DateSubmitted FROM ".$this->reviewer." as a
 				JOIN ".$this->review." as b
 					ON a.ReviewerID = b.ReviewerID
-				WHERE b.Status = 1";
+				WHERE b.Status = 1
+				ORDER BY a.ReviewerID DESC
+				";
 
 		$result = $db->query($sql);
 

@@ -80,6 +80,7 @@ $return = '
 		</div>
 	</div>
 <script>
+	$ = jQuery.noConflict();
 	$(function(){
 		 createPage(".review-layers",'.json_encode($array).');
 	});
