@@ -39,7 +39,7 @@ $return = '
 					
 					$star = "";
 					$fields = array( $row['Service'],$row['WillRecommend'],$row['TotalExperience'] ); 
-					$rating = ((array_sum($fields)) / 3);
+					$rating = round((array_sum($fields)) / 3);
 					
 					if ($rating == 5){
 						$star = "<i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i>";
