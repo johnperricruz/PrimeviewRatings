@@ -3,8 +3,8 @@
 This Model is the parent model class that returns database object
 *******************************************************************/
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/wp-config.php');
-//require_once($_SERVER['DOCUMENT_ROOT'].'/wordpress/wp-config.php');
+//require_once($_SERVER['DOCUMENT_ROOT'].'/wp-config.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/wordpress/wp-config.php');
 
 
 class database_model{	

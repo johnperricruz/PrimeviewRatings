@@ -1,11 +1,32 @@
 <?php
 require_once(plugin_dir_path( __FILE__ ).'../data/display_model.php'); 
-
+$array = array();
 $get = new display_model();
 $reviews = $get->getAllReviews();
-$return = 
-'
-	<div class="rating-main-form">
+$return = '
+<style>
+    ul, li{
+            list-style: none;
+        }
+        #wrapper{
+            width: 900px;
+            margin: 20px auto;
+        }
+        .data-container{
+            margin-top: 5px;
+        }
+        .data-container ul{
+            padding: 0;
+            margin: 0;
+        }
+        .data-container li{
+            margin-bottom: 5px;
+            padding: 5px 10px;
+            background: #eee;
+            color: #666;
+        }
+</style>
+<div class="rating-main-form">
 		<div class="pv-body">
 			<div class="pv-site-info">
 				
@@ -15,9 +36,11 @@ $return =
 				<div class="view-review">';
 				if($reviews!=null){
 				while($row = $reviews->fetch_assoc()){
+					
 					$star = "";
 					$fields = array( $row['Service'],$row['WillRecommend'],$row['TotalExperience'] ); 
 					$rating = ((array_sum($fields)) / 3);
+					
 					if ($rating == 5){
 						$star = "<i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i>";
 					}else if ($rating == 4){
@@ -29,7 +52,7 @@ $return =
 					}else if ($rating == 1){
 						$star = "<i class='fa fa-star'></i>";
 					}
-					$return .='<div class="wrap grid">
+					$layers = '<div class="wrap grid">
 									<div style="border:0px;" class="unit p20">
 										<div class="pv-review-image"><img src="'.plugin_dir_url(__FILE__).'../../admin/img/default-medium.png" title="" alt="" /></div>
 										<span class="pv-reviewer">'.$row['FirstName'].' '.$row['LastName'].'</span>
@@ -45,12 +68,21 @@ $return =
 										</div>
 									</div>
 								</div>';
+						$array[] =  $layers;	
 						}
 					}
-				$return .='</div>
+				
+				$return .='	
+					<div class="review-container"></div>
+					<div class="review-layers"></div>
+				</div>
 			</div>
 		</div>
 	</div>
-';
-
+<script>
+	$(function(){
+		 createPage(".review-layers",'.json_encode($array).');
+	});
+</script>
+	';
 return $return;

@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       Primeview Ratings
  * Plugin URI:        www.primeview.com
- * Description:       This Plugin is built for the customized Website Ratings
+ * Description:       This Plugin is built and for the customization Website Ratings
  * Version:           1.0.0
  * Author:            John Perri Cruz
  * Author URI:        https://www.johnperricruz.com
@@ -81,6 +81,7 @@ function run_primeview_plugin(){
 		$assets->pv_register_js();																//Load JS																
 	}else{
 		$assets->pv_register_front_css();	
+		$assets->pv_register_front_js();	
 	}
 }
 //Primeview admin init
